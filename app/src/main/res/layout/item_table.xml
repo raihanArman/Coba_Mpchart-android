@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNo"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            tools:text="1"
+            android:gravity="center"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvFixCo"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            tools:text="fixCO"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvNO2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            tools:text="fixNO2"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvFixSO2"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            tools:text="fixSO2"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvFixO3"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            tools:text="fixO3"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvfixPM10"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            tools:text="fixPM10"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            tools:text="tvDate"
+            android:background="@drawable/table_content_cell_bg"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>
