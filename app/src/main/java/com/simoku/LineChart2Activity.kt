@@ -9,6 +9,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.simoku.databinding.ActivityLineChart2Binding
 import com.simoku.databinding.ActivityLineChartBinding
 import com.simoku.model.DataModel
 import com.simoku.request.ApiService
@@ -17,20 +18,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LineChartActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLineChartBinding
+class LineChart2Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityLineChart2Binding
     var apiService: ApiService?= null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_line_chart)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_line_chart2)
 
-        supportActionBar?.title = "Trendline Chart"
+        supportActionBar?.title = "Trendline Chart 2"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         apiService = RetrofitRequest.getInstance()?.create(ApiService::class.java)
-
         listDataValues()
     }
 
@@ -38,7 +37,7 @@ class LineChartActivity : AppCompatActivity() {
     private fun listDataValues(){
         val listEntryFixCO = mutableListOf<Entry>()
         val listEntryFixNO2 = mutableListOf<Entry>()
-        val callSensor: Call<List<DataModel>> = apiService!!.getLine()
+        val callSensor: Call<List<DataModel>> = apiService!!.getLine2()
         callSensor.enqueue(object : Callback<List<DataModel>> {
             override fun onResponse(
                 call: Call<List<DataModel>>,
