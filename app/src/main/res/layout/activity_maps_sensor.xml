@@ -18,41 +18,84 @@
                 android:layout_height="wrap_content"
                 android:text="Sensor Gas"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tv_tanggal1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tanggal"
+                android:textColor="@color/black"
+                android:textSize="12sp"
                 android:layout_marginBottom="10dp"/>
 
-            <HorizontalScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp">
+                android:layout_height="wrap_content">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_sensor"
+                <TextView
+                    android:id="@+id/tv_kosong_sensor"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:nestedScrollingEnabled="false" />
+                    android:layout_margin="36dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Data kosong !"
+                    android:textSize="14sp" />
 
-            </HorizontalScrollView>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_sensor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false" />
+
+                </HorizontalScrollView>
+            </RelativeLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sensor Gas 2"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tv_tanggal2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tanggal"
+                android:textColor="@color/black"
+                android:textSize="12sp"
                 android:layout_marginBottom="10dp"/>
-
-            <HorizontalScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp">
+                android:layout_height="wrap_content">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_sensor2"
+                <TextView
+                    android:id="@+id/tv_kosong_sensor2"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:nestedScrollingEnabled="false" />
+                    android:layout_height="wrap_content"
+                    android:text="Data kosong !"
+                    android:layout_margin="36dp"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"/>
 
-            </HorizontalScrollView>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_sensor2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false" />
+
+                </HorizontalScrollView>
+            </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

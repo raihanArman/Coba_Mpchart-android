@@ -2,7 +2,9 @@ package com.simoku
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.MenuItem
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.simoku.adapter.TableAdapter
@@ -13,6 +15,7 @@ import com.simoku.request.RetrofitRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class MapsSensorActivity : AppCompatActivity() {
 
@@ -42,18 +45,30 @@ class MapsSensorActivity : AppCompatActivity() {
         binding.rvSensor2.layoutManager = LinearLayoutManager(this)
         binding.rvSensor2.adapter = adapter2
 
+        val date = Calendar.getInstance()
+        val dateNow = DateFormat.format("dd MMMM yyyy", date).toString()
+        binding.tvTanggal1.text = dateNow
+        binding.tvTanggal2.text = dateNow
         getDataSensor()
         getDataSensor2()
     }
 
     private fun getDataSensor2() {
-        val callSensor: Call<List<DataModel>> = apiService!!.getSensor2()
+        val date = Calendar.getInstance()
+        val dateNow = DateFormat.format("yyyy-MM-dd", date).toString()
+        val callSensor: Call<List<DataModel>> = apiService!!.getSensor2(dateNow)
         callSensor.enqueue(object : Callback<List<DataModel>>{
             override fun onResponse(
                 call: Call<List<DataModel>>,
                 response: Response<List<DataModel>>
             ) {
-                adapter2.setList(response.body()!!)
+                if(response.body() != null && response.body()!!.isNotEmpty()) {
+                    adapter2.setList(response.body()!!)
+                    binding.tvKosongSensor2.visibility = View.INVISIBLE
+                }else{
+                    binding.tvKosongSensor2.visibility = View.VISIBLE
+                    binding.rvSensor2.visibility = View.INVISIBLE
+                }
             }
 
             override fun onFailure(call: Call<List<DataModel>>, t: Throwable) {
@@ -63,13 +78,21 @@ class MapsSensorActivity : AppCompatActivity() {
     }
 
     private fun getDataSensor() {
-        val callSensor: Call<List<DataModel>> = apiService!!.getSensor()
+        val date = Calendar.getInstance()
+        val dateNow = DateFormat.format("yyyy-MM-dd", date).toString()
+        val callSensor: Call<List<DataModel>> = apiService!!.getSensor(dateNow)
         callSensor.enqueue(object : Callback<List<DataModel>>{
             override fun onResponse(
                 call: Call<List<DataModel>>,
                 response: Response<List<DataModel>>
             ) {
-                adapter.setList(response.body()!!)
+                if(response.body() != null && response.body()!!.isNotEmpty()) {
+                    adapter.setList(response.body()!!)
+                    binding.tvKosongSensor.visibility = View.INVISIBLE
+                }else{
+                    binding.tvKosongSensor.visibility = View.VISIBLE
+                    binding.rvSensor.visibility = View.INVISIBLE
+                }
             }
 
             override fun onFailure(call: Call<List<DataModel>>, t: Throwable) {

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.simoku.databinding.ActivityMainBinding
 import com.simoku.model.BarModel
@@ -63,11 +64,11 @@ class MainActivity : AppCompatActivity() {
                 response: Response<DataModel>
             ) {
                 val dataModel: DataModel = response.body()!!
-                setFeedback(dataModel.fixCO.toDouble(), binding.ivFixco2)
-                setFeedback(dataModel.fixNO2.toDouble(), binding.fixno2)
-                setFeedback(dataModel.fixSO2.toDouble(), binding.fixso2)
-                setFeedback(dataModel.fixO3.toDouble(), binding.fixo2)
-                setFeedback(dataModel.fixPM10.toDouble(), binding.fixpm2)
+                setFeedback(dataModel.fixCO.toDouble(), binding.ivFixco2, binding.tvFixco2)
+                setFeedback(dataModel.fixNO2.toDouble(), binding.fixno2, binding.tvFixno2)
+                setFeedback(dataModel.fixSO2.toDouble(), binding.fixso2, binding.tvFixso2)
+                setFeedback(dataModel.fixO3.toDouble(), binding.fixo2, binding.tvFixo2)
+                setFeedback(dataModel.fixPM10.toDouble(), binding.fixpm2, binding.tvFixpm2)
             }
 
             override fun onFailure(call: Call<DataModel>, t: Throwable) {
@@ -84,11 +85,11 @@ class MainActivity : AppCompatActivity() {
                 response: Response<DataModel>
             ) {
                 val dataModel: DataModel = response.body()!!
-                setFeedback(dataModel.fixCO.toDouble(), binding.ivFixco)
-                setFeedback(dataModel.fixNO2.toDouble(), binding.fixno)
-                setFeedback(dataModel.fixSO2.toDouble(), binding.fixso)
-                setFeedback(dataModel.fixO3.toDouble(), binding.fixo)
-                setFeedback(dataModel.fixPM10.toDouble(), binding.fixpm)
+                setFeedback(dataModel.fixCO.toDouble(), binding.ivFixco, binding.tvFixco)
+                setFeedback(dataModel.fixNO2.toDouble(), binding.fixno,binding.tvFixno)
+                setFeedback(dataModel.fixSO2.toDouble(), binding.fixso, binding.tvFixso)
+                setFeedback(dataModel.fixO3.toDouble(), binding.fixo, binding.tvFixo)
+                setFeedback(dataModel.fixPM10.toDouble(), binding.fixpm, binding.tvFixpm)
             }
 
             override fun onFailure(call: Call<DataModel>, t: Throwable) {
@@ -97,17 +98,22 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun setFeedback(value: Double, imageView: ImageView){
+    fun setFeedback(value: Double, imageView: ImageView, textView: TextView){
         if(value >= 300){
             imageView.setImageResource(R.drawable.simo_bad)
+            textView.text = "Berbahaya"
         }else if(value in 200.0..299.0){
             imageView.setImageResource(R.drawable.simo_poor)
+            textView.text = "Sangat tidak sehat"
         }else if(value in 101.0..199.0){
             imageView.setImageResource(R.drawable.simo_avarege)
+            textView.text = "Tidak sehat"
         }else if(value in 51.0..100.0){
             imageView.setImageResource(R.drawable.simo_good)
+            textView.text = "Sedang"
         }else if(value in -200.0..50.00){
             imageView.setImageResource(R.drawable.simo_happy)
+            textView.text = "Baik"
         }
     }
 
